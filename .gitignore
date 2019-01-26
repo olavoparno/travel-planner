@@ -1,0 +1,12 @@
+node_modules
+coverage
+.nyc_output
+.DS_Store
+*.log
+.vscode
+.idea
+build
+docs
+.buildstatus
+.rpt2_cache
+server

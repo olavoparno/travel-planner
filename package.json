@@ -1,0 +1,121 @@
+{
+  "name": "vacation-planner",
+  "version": "0.0.1-alpha",
+  "description": "A simple vacation planner app",
+  "keywords": [
+    "typescript",
+    "react",
+    "jest",
+    "vacation"
+  ],
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "author": "Olavo Parno <olavoparno@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:olavoparno/travel-planner.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.12.0"
+  },
+  "scripts": {
+    "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf build && rimraf .rpt2_cache && echo nok > .buildstatus",
+    "postbuild": "npm run test && echo ok > .buildstatus && npm run docs",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "docs": "npm run make-badges && typedoc --out docs --target es6 --readme README.md --theme minimal --mode file src",
+    "start": "tsc --module commonjs && rollup -c rollup.config.ts -w",
+    "build-badges": "node_modules/.bin/jest-badges-readme",
+    "make-badges": "npm run build-badges",
+    "test": "jest --coverage || true",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "moduleNameMapper": {},
+    "testRegex": "(/__tests__/.*|\\.(test2|spec2))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverage": true
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@olavoparno/jest-badges-readme": "^1.2.5",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
+    "commitizen": "^3.0.5",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "node-sass": "^4.10.0",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.4",
+    "rollup-copy-plugin": "^0.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-livereload": "^0.6.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-sass": "^1.1.0",
+    "rollup-plugin-serve": "^1.0.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.18.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-config-standard": "^8.0.1",
+    "typedoc": "^0.13.0",
+    "typescript": "^3.2.2",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
