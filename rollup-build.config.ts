@@ -6,8 +6,6 @@ import json from 'rollup-plugin-json'
 import sass from 'rollup-plugin-sass'
 import copyPlugin from 'rollup-copy-plugin';
 import replace from 'rollup-plugin-replace'
-import serve from 'rollup-plugin-serve'
-import livereload from 'rollup-plugin-livereload'
 
 const pkg = require('./package.json')
 const libraryName = 'index'
@@ -60,8 +58,6 @@ export default {
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('development')
-    }),
-    serve('build'),
-    livereload()
+    })
   ],
 }
