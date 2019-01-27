@@ -61,7 +61,7 @@ class TravelService implements ITravelService {
       .then(data => {
         return data
       })
-      .catch(() => new Error(`Error on fetching data for ${path}.`))
+      .catch(() => `Error on fetching data for ${path}.`)
   }
 }
 
