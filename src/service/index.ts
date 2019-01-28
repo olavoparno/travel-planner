@@ -1,4 +1,4 @@
-import { ICities, IWeather, IConditions, ITravelService } from './interface';
+import { ICity, IWeather, ICondition, ITravelService } from './interface';
 import Config from '@Config/index'
 
 /**
@@ -17,7 +17,7 @@ class TravelService implements ITravelService {
    * @returns Promise<ICities>
    * @memberof TravelService
    */
-  public getCities = (): Promise<ICities> => {
+  public getCities = (): Promise<ICity> => {
     const path = `${Config.api.baseUrl}/cities/`
     return this.fetchData(path)
   }
@@ -41,7 +41,7 @@ class TravelService implements ITravelService {
    * @returns Promise<IConditions>
    * @memberof TravelService
    */
-  public getConditions = (id: string, year: string): Promise<IConditions> => {
+  public getConditions = (id: string, year: string): Promise<ICondition> => {
     const path = `${Config.api.baseUrl}/cities/${id}/year/${year}/`
     return this.fetchData(path)
   }

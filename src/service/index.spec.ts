@@ -1,7 +1,7 @@
 import {GlobalWithFetchMock} from "jest-fetch-mock";
 
 import TravelService from './index'
-import { ICities, IWeather, IConditions } from './interface'
+import { ICity, IWeather, ICondition } from './interface'
 import Config from '@Config/index'
 import Mock from '@Mock/index'
 
@@ -43,7 +43,7 @@ describe('Tests for TravelService class', () => {
     )
     service
       .getCities()
-      .then((response: ICities) => {
+      .then((response: ICity) => {
         expect(response).toBeDefined()
         done()
       })
@@ -73,7 +73,7 @@ describe('Tests for TravelService class', () => {
     }
     service
       .getConditions(config.id, config.year)
-      .then((response: IConditions) => {
+      .then((response: ICondition) => {
         const firstResponse = response[0]
         expect(response).toBeDefined()
         expect(firstResponse.woeid).toEqual(config.id)

@@ -1,8 +1,8 @@
 /**
  * Typings for Cities object
- * @interface ICities
+ * @interface ICity
  */
-export interface ICities {
+export interface ICity {
   woeid: string;
   district: string;
   province: string;
@@ -21,9 +21,9 @@ export interface IWeather {
 
 /**
  * Typings for Conditions object
- * @interface IConditions
+ * @interface ICondition
  */
-export interface IConditions {
+export interface ICondition {
   date: string;
   temperature: ITemperature;
   weather: string;
@@ -45,7 +45,7 @@ export interface ITemperature {
  * @interface ITravelService
  */
 export interface ITravelService {
-  getCities: () => Promise<ICities>
+  getCities: () => Promise<ICity>
   getWeather: () => Promise<IWeather>
-  getConditions: (id: string, year: string) => Promise<IConditions>
+  getConditions: (id: string, year: string) => Promise<ICondition>
 }
