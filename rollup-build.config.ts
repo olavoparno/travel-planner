@@ -37,8 +37,8 @@ export default {
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs({
       namedExports: {
-        'node_modules/react/index.js': ['Children', 'Component', 'createElement'],
-        'node_modules/react-dom/index.js': ['render']
+        'node_modules/react/index.js': ['Children', 'Component', 'PureComponent', 'createElement'],
+        'node_modules/react-dom/index.js': ['render', 'createPortal', 'findDOMNode']
       }
     }),
     // Allow node_modules resolution, so you can use 'external' to control

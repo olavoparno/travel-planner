@@ -25,6 +25,7 @@
     "baseUrl": "./",
     "allowJs": true,
     "paths": {
+      "@Components/*": ["src/components/*"],
       "@Service/*": ["src/service/*"],
       "@Mock/*": ["src/mock/*"],
       "@Config/*": ["src/config/*"]

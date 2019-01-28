@@ -82,6 +82,7 @@
     },
     "collectCoverage": true,
     "moduleNameMapper": {
+      "@Components(.*)$": "<rootDir>/src/components/$1",
       "@Config(.*)$": "<rootDir>/src/config/$1",
       "@Mock(.*)$": "<rootDir>/src/mock/$1",
       "@Service(.*)$": "<rootDir>/src/service/$1"
@@ -97,6 +98,7 @@
     "@types/node": "^10.12.18",
     "@types/react": "^16.7.21",
     "@types/react-dom": "^16.0.11",
+    "@types/react-select": "^2.0.11",
     "commitizen": "^3.0.5",
     "jest": "^23.6.0",
     "jest-fetch-mock": "^2.1.0",
@@ -126,6 +128,8 @@
   },
   "dependencies": {
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-select": "^2.3.0",
+    "unstated": "^2.1.1"
   }
 }
