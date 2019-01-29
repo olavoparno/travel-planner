@@ -3,7 +3,8 @@ export interface ISelectedValues {
   cities: any
   weathers: any
   perfectConditions: any
-  selectedCity: string
+  selectedCityId: string
+  selectedCityName: string
   selectedWeather: string
   currentYear: string
-};
+}

@@ -1,7 +1,7 @@
 import { Container } from "unstated"
 import startCase from 'lodash/startCase'
 
-import { ICity, IWeather, ICondition } from '@Service/interface'
+import { ICity, IWeather, ICondition, IBestCondition } from '@Service/interface'
 import TravelService from '@Service/index'
 import { ISelectedValues } from '@Components/container/interface'
 
@@ -14,7 +14,8 @@ class AppContainer extends Container<ISelectedValues> {
       cities: this.fetchCities(),
       weathers: this.fetchWeather(),
       perfectConditions: [],
-      selectedCity: '',
+      selectedCityId: '',
+      selectedCityName: '',
       selectedWeather: '',
       currentYear: '2018'
     }
@@ -62,12 +63,13 @@ class AppContainer extends Container<ISelectedValues> {
       this.setState({
         selectedWeather: startCase(selectedOption.value.name)
       })
-      break;
+      break
       case 'city':
       this.setState({
-        selectedCity: selectedOption.value.woeid
+        selectedCityId: selectedOption.value.woeid,
+        selectedCityName: selectedOption.value.district
       })
-      break;
+      break
     }
 
   }
@@ -79,28 +81,36 @@ class AppContainer extends Container<ISelectedValues> {
   }
 
   showTimeTable() {
-    const { selectedCity, selectedWeather, currentYear } = this.state;
-    if (selectedCity && currentYear) {
+    const { selectedCityId, selectedWeather, currentYear } = this.state
+    if (selectedCityId && currentYear) {
       this.service
-        .getConditions(selectedCity, currentYear)
+        .getConditions(selectedCityId, currentYear)
         .then((conditions: ICondition) => {
-          const newConditions = Object.values(conditions).map((condition: ICondition) => {
-            if (startCase(condition.weather) === selectedWeather) {
-              console.log(condition)
-            }
+          const filterConditions = Object.values(conditions).filter((condition: ICondition) => {
+            return startCase(condition.weather) === startCase(selectedWeather)
+          })
+          const newConditions: IBestCondition[] = filterConditions.map((condition: ICondition) => {
             return {
-              value: condition,
-              type: 'conditions'
+              cityName: this.state.selectedCityName,
+              weatherName: this.state.selectedWeather,
+              date: condition.date,
+              temperatureMin: `${condition.temperature.min} ${condition.temperature.unit}`,
+              temperatureMax: `${condition.temperature.max} ${condition.temperature.unit}`
             }
           })
-          this.setState({
-            perfectConditions: newConditions
-          })
+          if (newConditions.length >= Number(this.state.vacationDays)) {
+            this.setState({
+              perfectConditions: newConditions
+            })
+          } else {
+            console.log('Not enough days with this kind of weather')
+          }
         })
+
     } else {
       console.log('There is nothing to return')
     }
   }
 }
 
-export default AppContainer;
+export default AppContainer

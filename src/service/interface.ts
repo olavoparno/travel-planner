@@ -31,6 +31,18 @@ export interface ICondition {
 }
 
 /**
+ * Typings for Best Conditions object
+ * @interface IBestCondition
+ */
+export interface IBestCondition {
+  cityName: string
+  weatherName: string
+  date: string
+  temperatureMin: string
+  temperatureMax: string
+}
+
+/**
  * Typings for Temperature object
  * @interface ITemperature
  */
