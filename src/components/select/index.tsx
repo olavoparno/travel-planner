@@ -3,15 +3,8 @@ import Select from 'react-select'
 import { Subscribe } from 'unstated';
 
 import AppContainer from '@Components/container'
-import { timingSafeEqual } from 'crypto';
 
-type State = {
-  selectedOption: any
-}
-
-type Props = {
-  fetchOptions: []
-}
+import { Props, State } from './interface'
 
 class CustomSelect extends React.Component<Props, State> {
   state = {
@@ -19,23 +12,28 @@ class CustomSelect extends React.Component<Props, State> {
   }
 
   handleChange = (selectedOption: any, container: AppContainer) => {
+    container.setSelection(selectedOption)
     this.setState({ selectedOption });
   }
 
   render() {
     const { selectedOption } = this.state;
-    const { fetchOptions } = this.props;
-
+    const { selectOptions } = this.props;
     return (
-    <Subscribe to={[AppContainer]}>
-      {(container: AppContainer) => (
-        <Select
-          value={selectedOption}
-          onChange={(selectedOption) => this.handleChange(selectedOption, container)}
-          options={fetchOptions}
-        />
-      )}
-    </Subscribe>
+      <Subscribe to={[AppContainer]}>
+        {
+          (container: AppContainer) => {
+          console.log('Container', container)
+          return (
+            <Select
+              value={selectedOption}
+              onChange={(selectedOption) => this.handleChange(selectedOption, container)}
+              options={selectOptions}
+            />
+            )
+          }
+        }
+      </Subscribe>
     )
   }
 }
