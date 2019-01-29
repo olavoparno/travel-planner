@@ -3,11 +3,11 @@
  * @interface ICity
  */
 export interface ICity {
-  woeid: string;
-  district: string;
-  province: string;
-  state_acronym: string;
-  country: string;
+  woeid: string
+  district: string
+  province: string
+  state_acronym: string
+  country: string
 }
 
 /**
@@ -15,8 +15,8 @@ export interface ICity {
  * @interface IWeather
  */
 export interface IWeather {
-  id: string;
-  name: string;
+  id: string
+  name: string
 }
 
 /**
@@ -24,10 +24,10 @@ export interface IWeather {
  * @interface ICondition
  */
 export interface ICondition {
-  date: string;
-  temperature: ITemperature;
-  weather: string;
-  woeid: string;
+  date: string
+  temperature: ITemperature
+  weather: string
+  woeid: string
 }
 
 /**
@@ -35,9 +35,9 @@ export interface ICondition {
  * @interface ITemperature
  */
 export interface ITemperature {
-  max: number;
-  min: number;
-  unit: string;
+  max: number
+  min: number
+  unit: string
 }
 
 /**

@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import { Subscribe } from 'unstated';
+import { Subscribe } from 'unstated'
 
 import AppContainer from '@Components/container'
 
@@ -13,12 +13,12 @@ class CustomSelect extends React.Component<Props, State> {
 
   handleChange = (selectedOption: any, container: AppContainer) => {
     container.setSelection(selectedOption)
-    this.setState({ selectedOption });
+    this.setState({ selectedOption })
   }
 
   render() {
-    const { selectedOption } = this.state;
-    const { selectOptions } = this.props;
+    const { selectedOption } = this.state
+    const { selectOptions } = this.props
     return (
       <Subscribe to={[AppContainer]}>
         {

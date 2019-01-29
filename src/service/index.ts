@@ -1,4 +1,4 @@
-import { ICity, IWeather, ICondition, ITravelService } from './interface';
+import { ICity, IWeather, ICondition, ITravelService } from './interface'
 import Config from '@Config/index'
 
 /**
@@ -65,4 +65,4 @@ class TravelService implements ITravelService {
   }
 }
 
-export default TravelService;
+export default TravelService

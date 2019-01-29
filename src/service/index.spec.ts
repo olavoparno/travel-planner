@@ -1,4 +1,4 @@
-import {GlobalWithFetchMock} from "jest-fetch-mock";
+import {GlobalWithFetchMock} from "jest-fetch-mock"
 
 import TravelService from './index'
 import { ICity, IWeather, ICondition } from './interface'
@@ -31,8 +31,8 @@ describe('Test for TravelService class failures', () => {
 
 describe('Tests for TravelService class', () => {
   beforeAll(() => {
-    customGlobal = global as GlobalWithFetchMock;
-    customGlobal.fetch.resetMocks();
+    customGlobal = global as GlobalWithFetchMock
+    customGlobal.fetch.resetMocks()
     service = new TravelService()
   })
   it('should retrieve all cities', done => {
