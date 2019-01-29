@@ -1,20 +1,11 @@
 import { Container } from "unstated"
-import capitalize from 'lodash/capitalize'
+import startCase from 'lodash/startCase'
 
 import { ICity, IWeather, ICondition } from '@Service/interface'
 import TravelService from '@Service/index'
+import { ISelectedValues } from '@Components/container/interface'
 
-type SelectedValues = {
-  vacationDays: string
-  cities: any,
-  weathers: any,
-  perfectConditions: any,
-  selectedCity: string,
-  selectedWeather: string,
-  currentYear: string
-};
-
-class AppContainer extends Container<SelectedValues> {
+class AppContainer extends Container<ISelectedValues> {
   constructor() {
     super()
 
@@ -38,12 +29,12 @@ class AppContainer extends Container<SelectedValues> {
         const newCities = Object.values(cities).map((city: ICity) => {
           return {
             value: city,
-            label: capitalize(city.district),
+            label: city.district,
             type: 'city'
           }
         })
         this.setState({
-          cities: newCities
+          cities: newCities.sort((a, b) => a.label.localeCompare(b.label))
         })
       })
   }
@@ -55,22 +46,21 @@ class AppContainer extends Container<SelectedValues> {
         const newWeathers = Object.values(weathers).map((weather: IWeather) => {
           return {
             value: weather,
-            label: capitalize(weather.name),
+            label: startCase(weather.name),
             type: 'weather'
           }
         })
         this.setState({
-          weathers: newWeathers
+          weathers: newWeathers.sort()
         })
       })
   }
 
   setSelection(selectedOption: any) {
-    console.log('SelectedOption', selectedOption.type)
     switch (selectedOption.type) {
       case 'weather':
       this.setState({
-        selectedWeather: capitalize(selectedOption.value.name)
+        selectedWeather: startCase(selectedOption.value.name)
       })
       break;
       case 'city':
@@ -95,7 +85,7 @@ class AppContainer extends Container<SelectedValues> {
         .getConditions(selectedCity, currentYear)
         .then((conditions: ICondition) => {
           const newConditions = Object.values(conditions).map((condition: ICondition) => {
-            if (capitalize(condition.weather) === selectedWeather) {
+            if (startCase(condition.weather) === selectedWeather) {
               console.log(condition)
             }
             return {
