@@ -55,7 +55,6 @@ export default {
     sourceMaps(),
     copyPlugin({
         'public/index.html': 'build/index.html',
-        'public/logo.png': 'build/logo.png',
         'public/favicon.ico': 'build/favicon.ico'
     }),
     replace({
