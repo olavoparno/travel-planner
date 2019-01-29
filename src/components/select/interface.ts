@@ -9,4 +9,5 @@ export interface State {
 
 export interface Props {
   selectOptions: IOption[]
+  style?: string
 }
