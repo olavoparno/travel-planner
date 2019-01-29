@@ -17,9 +17,8 @@
 1. Clone the project from https://github.com/olavoparno/travel-planner.git
 2. Run `npm install` in order to install the project dependencies
 3. Run either `npm run build` to literally build the project into `<rootDir>/build` or run `npm start` in order to serve the project in your browser
-4. Have the Stubby4j server up and running
 
-* Note: it is assumed that you have Node >= 8.12.0 and NPM >= 6.4.1
+* Note: it is assumed that you have Node >= 8.12.0 and NPM >= 6.4.1 and have the Stubby4j server up and running
 
 ### TODO
 * A better state management implementation
