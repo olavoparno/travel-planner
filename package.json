@@ -24,12 +24,12 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf build && rimraf .rpt2_cache && echo nok > .buildstatus",
-    "postbuild": "npm run test && echo ok > .buildstatus && npm run docs",
+    "postbuild": "yarn run test && echo ok > .buildstatus && yarn run docs",
     "build": "tsc --module commonjs && rollup -c rollup-build.config.ts",
-    "start": "npm run prebuild && tsc --module commonjs && rollup -c rollup.config.ts -w",
-    "docs": "npm run make-badges && typedoc --out docs --target es6 --readme README.md --theme minimal --mode file src",
+    "start": "yarn run prebuild && tsc --module commonjs && rollup -c rollup.config.ts -w",
+    "docs": "yarn run make-badges && typedoc --out docs --target es6 --readme README.md --theme minimal --mode file src",
     "build-badges": "node_modules/.bin/jest-badges-readme",
-    "make-badges": "npm run build-badges",
+    "make-badges": "yarn run build-badges",
     "test": "jest --coverage || true",
     "precommit": "lint-staged",
     "postinstall": "rollup-watch-fix"
@@ -46,7 +46,7 @@
     },
     "validate-commit-msg": {
       "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+      "helpMessage": "Use \"yarn run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
     }
   },
   "jest": {
