@@ -2,7 +2,7 @@ import { IConfig } from './interface'
 
 const config: IConfig = {
   api: {
-    baseUrl: 'http://localhost:8882'
+    baseUrl: 'https://time-for-another-trip-endpoint.herokuapp.com'
   }
 }
 

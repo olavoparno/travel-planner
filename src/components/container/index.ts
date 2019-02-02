@@ -17,7 +17,7 @@ class AppContainer extends Container<ISelectedValues> {
       selectedCityId: '',
       selectedCityName: '',
       selectedWeather: '',
-      currentYear: '2018'
+      currentYear: '2019'
     }
   }
 
