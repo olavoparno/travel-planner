@@ -11,7 +11,7 @@
 | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-50%25-red.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
 
 ## Motivation
-* A test for a Front-End job application at Nextel and a sheer desire to learn more and more everyday
+* A test for a Front-End job application and a sheer desire to learn more and more everyday
 
 ### Setup Development Environment
 1. Clone the project from https://github.com/olavoparno/travel-planner.git
